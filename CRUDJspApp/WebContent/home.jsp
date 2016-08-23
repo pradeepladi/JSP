@@ -16,17 +16,7 @@
 		out.print(request.getParameter("message"));
 	} %>
 
-	<%
-	    PreparedStatement crs = con.prepareStatement("select * from persons");
-		ResultSet rs = crs.executeQuery();
-		if(!rs.next())
-		{
-			out.println("<h3>Sorry! No employees found!</h3>");
-			crs.close();
-			return;
-		}
-				
-	%>
+	
 	<p><a href="add.jsp" >Add</a></p>
 	<table>
 		<tr>
@@ -37,6 +27,17 @@
 			<th>city</th>
 			<th>Action</th>
 		</tr>
+		<%
+	    PreparedStatement crs = con.prepareStatement("select * from persons");
+		ResultSet rs = crs.executeQuery();
+		if(!rs.next())
+		{
+			out.println("<h3>Sorry! No User Details found!</h3>");
+			crs.close();
+			return;
+		}
+				
+	%>
 		<% 
 		while(rs.next())
 				{
